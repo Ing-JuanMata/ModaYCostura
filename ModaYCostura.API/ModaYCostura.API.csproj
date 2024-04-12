@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\ModaYCostura.Data\ModaYCostura.Data.csproj" />
+	  <ProjectReference Include="..\ModaYCostura.Model\ModaYCostura.Model.csproj" />
+	  <ProjectReference Include="..\ModaYCostura.Service\ModaYCostura.Service.csproj" />
+	</ItemGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == '' Or '$(Configuration)' == 'Debug'">
+		<EnvironmentName>Development</EnvironmentName>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == 'Release'">
+		<EnvironmentName>Production</EnvironmentName>
+	</PropertyGroup>
+
+</Project>
