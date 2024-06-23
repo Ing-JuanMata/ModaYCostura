@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\publish\ModaYCostura</_PublishTargetUrl>
-    <History>True|2024-04-12T01:51:26.6215427Z;True|2024-04-11T18:42:49.0087062-07:00;True|2024-04-11T18:41:26.1754776-07:00;True|2024-04-11T18:25:40.7605870-07:00;True|2024-04-11T17:27:10.0820625-07:00;</History>
+    <History>True|2024-06-23T21:29:07.1838513Z;True|2024-04-11T18:51:26.6215427-07:00;True|2024-04-11T18:42:49.0087062-07:00;True|2024-04-11T18:41:26.1754776-07:00;True|2024-04-11T18:25:40.7605870-07:00;True|2024-04-11T17:27:10.0820625-07:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

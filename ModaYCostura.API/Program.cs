@@ -13,6 +13,14 @@ builder.Services.AddSwaggerGen();
 var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 builder.Configuration.AddJsonFile("appsettings.json", true, true).AddJsonFile($"appsettings.{env}.json", true, true);
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod();
+    });
+});
+
 var connectionString = builder.Configuration.GetConnectionString("default");
 builder.Services.AddDbContext<DefaultContext>(options => options.UseNpgsql(connectionString));
 
@@ -26,6 +34,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors();
 
 app.UseAuthorization();
 

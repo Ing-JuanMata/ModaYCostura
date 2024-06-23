@@ -3,7 +3,7 @@ using ModaYCostura.Model.Models;
 
 namespace ModaYCostura.Data
 {
-    public class DefaultContext: DbContext
+    public class DefaultContext : DbContext
     {
         public DefaultContext() { }
         public DefaultContext(DbContextOptions<DefaultContext> options) : base(options) { }
