@@ -19,5 +19,6 @@ namespace ModaYCostura.Model.Models
         [Required, MinLength(10), MaxLength(15)]
         public string Phone { get; set; } = string.Empty;
         public bool IsAdmin { get; set; } = false;
+        public List<Job> Jobs { get; set; } = new();
     }
 }
