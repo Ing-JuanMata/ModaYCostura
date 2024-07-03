@@ -9,7 +9,6 @@ namespace ModaYCostura.Service
     public class ClientService
     {
         private readonly DefaultContext _context;
-
         public ClientService(DefaultContext context) { _context = context; }
 
         public IApiResponse<IEnumerable<Client>> GetClients() => new ApiSuccess<IEnumerable<Client>>(_context.Clients.AsQueryable().Where(c => !c.IsAdmin));
