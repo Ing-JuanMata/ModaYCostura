@@ -17,7 +17,7 @@ namespace ModaYCostura.Model.Models
         public Status Status { get; set; } = new();
         public Localization Localization { get; set; } = new();
         public Client Client { get; set; } = new();
-        public List<Property> Properties { get; set; } = new();
-        public List<Material> Materials { get; set; } = new();
+        public List<JobProperty> Properties { get; set; } = new();
+        public List<JobMaterial> Materials { get; set; } = new();
     }
 }
