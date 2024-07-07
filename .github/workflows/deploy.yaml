@@ -13,9 +13,11 @@ jobs:
             - name: build
               run: docker build -t ghcr.io/ing-juanmata/modaycostura:latest .
             - name: login to docker
-              run: echo ${{ secrets.DOCKER_KEY }} | docker login --username ${{github.actor}} --password-stdin
+              run: echo ${{ secrets.GITHUB_TOKEN }} | docker login --username ${{github.actor}} --password-stdin ghcr.io
             - name: push image
               run: docker push ghcr.io/ing-juanmata/modaycostura:latest
+            - name: logout docker
+              run: docker logout
             - name: remove container
               run: docker rm -f MYC
             - name: create container in port 80
