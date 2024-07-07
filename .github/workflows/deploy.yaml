@@ -16,3 +16,7 @@ jobs:
               run: docker login --username ing-juanmata --password ${{secrets.GITHUB_TOKEN}}
             - name: push image
               run: docker push ghcr.io/ing-juanmata/modaycostura:latest
+            - name: remove container
+              run: docker rm -f MYC
+            - name: create container in port 80
+              run: docker run --name MYC -p 80:5000 -d ghcr.io/ing-juanmata/modaycostura:latest
