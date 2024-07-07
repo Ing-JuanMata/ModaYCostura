@@ -11,22 +11,22 @@ namespace ModaYCostura.Service
         private readonly DefaultContext _context;
         public ClientService(DefaultContext context) { _context = context; }
 
-        public IApiResponse<IEnumerable<Client>> GetClients() => new ApiSuccess<IEnumerable<Client>>(_context.Clients.AsQueryable().Where(c => !c.IsAdmin));
-        public IApiResponse<Client> GetClient(string phone)
+        public IApiResponse<IEnumerable<Client>> GetAll() => new ApiSuccess<IEnumerable<Client>>(_context.Clients.AsQueryable().Where(c => !c.IsAdmin));
+        public IApiResponse<Client> Get(string phone)
         {
             var response = _context.Clients.Where(e => e.Phone == phone).FirstOrDefault();
             if (response == null) { return new ApiFail<Client>(); }
             return new ApiSuccess<Client>(response);
         }
 
-        public IApiResponse<bool> ClientExists(string phone)
+        public IApiResponse<bool> Exists(string phone)
         {
             var response = _context.Clients.Where(e => e.Phone == phone).FirstOrDefault();
             if (response == null) { return new ApiFail<bool>(); }
             return new ApiSuccess<bool>(true);
         }
 
-        public IApiResponse<Client> AddClient(Client client)
+        public IApiResponse<Client> Add(Client client)
         {
             if (_context.Clients.Where(c => c.Phone == client.Phone).Any()) return new ApiFail<Client>("P01");
             var newClient = _context.Clients.Add(client).Entity;
@@ -34,7 +34,7 @@ namespace ModaYCostura.Service
             return new ApiSuccess<Client>(newClient);
         }
 
-        public IApiResponse<Client> UpdateClient(Client client)
+        public IApiResponse<Client> Update(Client client)
         {
             try
             {

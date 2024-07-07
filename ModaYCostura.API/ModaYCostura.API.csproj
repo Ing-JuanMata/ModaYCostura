@@ -17,6 +17,12 @@
 	  <ProjectReference Include="..\ModaYCostura.Service\ModaYCostura.Service.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Content Update="appsettings.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
 	<PropertyGroup Condition=" '$(Configuration)' == '' Or '$(Configuration)' == 'Debug'">
 		<EnvironmentName>Development</EnvironmentName>
 	</PropertyGroup>

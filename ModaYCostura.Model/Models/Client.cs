@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace ModaYCostura.Model.Models
 {
@@ -19,6 +14,8 @@ namespace ModaYCostura.Model.Models
         [Required, MinLength(10), MaxLength(15)]
         public string Phone { get; set; } = string.Empty;
         public bool IsAdmin { get; set; } = false;
-        public List<Job> Jobs { get; set; } = new();
+        public int Jobs { get { return JobList.Count; } }
+        [JsonIgnore]
+        public List<Job> JobList { get; set; } = new();
     }
 }

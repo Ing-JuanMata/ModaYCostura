@@ -6,8 +6,7 @@ using ModaYCostura.Service;
 
 namespace ModaYCostura.API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
+    [ApiController, Route("api/[controller]")]
     public class ClientController : Controller
     {
         private readonly ClientService _clientService;
@@ -16,19 +15,19 @@ namespace ModaYCostura.API.Controllers
             _clientService = new ClientService(defaultContext);
         }
 
-        [HttpGet, Route("GetClients")]
-        public IApiResponse<IEnumerable<Client>> GetClients() => _clientService.GetClients();
+        [HttpGet, Route("GetAll")]
+        public IApiResponse<IEnumerable<Client>> GetAll() => _clientService.GetAll();
 
-        [HttpGet, Route("GetClient/{phone}")]
-        public IApiResponse<Client> GetClient(string phone) => _clientService.GetClient(phone);
+        [HttpGet, Route("Get/{phone}")]
+        public IApiResponse<Client> Get(string phone) => _clientService.Get(phone);
 
-        [HttpGet, Route("ClientExists/{phone}")]
-        public IApiResponse<bool> ClientExists(string phone) => _clientService.ClientExists(phone);
+        [HttpGet, Route("Exists/{phone}")]
+        public IApiResponse<bool> Exists(string phone) => _clientService.Exists(phone);
 
-        [HttpPost, Route("PostClient")]
-        public IApiResponse<Client> PostClient([FromBody] Client client) => _clientService.AddClient(client);
+        [HttpPost, Route("Add")]
+        public IApiResponse<Client> Add([FromBody] Client client) => _clientService.Add(client);
 
-        [HttpPut, Route("PutClient")]
-        public IApiResponse<Client> PutClient([FromBody] Client client) => _clientService.UpdateClient(client);
+        [HttpPut, Route("Update")]
+        public IApiResponse<Client> Update([FromBody] Client client) => _clientService.Update(client);
     }
 }
