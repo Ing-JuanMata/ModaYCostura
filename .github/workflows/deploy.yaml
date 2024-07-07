@@ -13,7 +13,7 @@ jobs:
             - name: build
               run: docker build -t ghcr.io/ing-juanmata/modaycostura:latest .
             - name: login to docker
-              run: docker login --username ${{github.actor}} --password ${{secrets.GITHUB_TOKEN}}
+              run: echo ${{ secrets.GITHUB_TOKEN }} | docker login --username ${{github.actor}} --password-stdin
             - name: push image
               run: docker push ghcr.io/ing-juanmata/modaycostura:latest
             - name: remove container
