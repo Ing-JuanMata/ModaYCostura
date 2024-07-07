@@ -1,0 +1,22 @@
+name: deploy
+run-name: deploying api
+on:
+    workflow_dispatch:
+    pull_request:
+        types: [closed]
+        branches: [main]
+jobs:
+    build-container:
+        runs-on: self-hosted
+        steps:
+            - uses: actions/checkout@v4
+            - name: build
+              run: docker build -t ghcr.io/ing-juanmata/modaycostura:latest .
+            - name: login to docker
+              run: docker login --username ing-juanmata --password ${{secrets.GITHUB_TOKEN}}
+            - name: push image
+              run: docker push ghcr.io/ing-juanmata/modaycostura:latest
+            - name: remove container
+              run: docker rm -f MYC
+            - name: create container in port 80
+              run: docker run --name MYC -p 80:5000 -d ghcr.io/ing-juanmata/modaycostura:latest
