@@ -1,6 +1,7 @@
 name: deploy
 run-name: deploying api
 on:
+    push:
     workflow_dispatch:
     pull_request:
         types: [closed]
@@ -21,4 +22,4 @@ jobs:
             - name: remove container
               run: docker rm -f MYC
             - name: create container in port 80
-              run: docker run --name MYC -p 80:5000 -d ghcr.io/ing-juanmata/modaycostura:latest
+              run: docker run --name myc --network=composers_default -d ghcr.io/ing-juanmata/modaycostura:latest
