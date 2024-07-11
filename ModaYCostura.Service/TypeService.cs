@@ -1,12 +1,7 @@
 ﻿using ModaYCostura.Data;
 using ModaYCostura.Model.DTO;
 using ModaYCostura.Model.Interfaces;
-using ModaYCostura.Model.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Npgsql;
 
 namespace ModaYCostura.Service
 {
@@ -23,6 +18,24 @@ namespace ModaYCostura.Service
             var newType = _context.Types.Add(type).Entity;
             _context.SaveChanges();
             return new ApiSuccess<Model.Models.Type>(newType);
+        }
+
+        public IApiResponse<Model.Models.Type> Update(Model.Models.Type type)
+        {
+            try
+            {
+                _context.Types.Update(type);
+                _context.SaveChanges();
+                return new ApiSuccess<Model.Models.Type>(type);
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException is PostgresException exception)
+                {
+                    return new ApiFail<Model.Models.Type>($"SQLCode: {exception.SqlState}");
+                }
+                return new ApiFail<Model.Models.Type>(ex.Message);
+            }
         }
     }
 }

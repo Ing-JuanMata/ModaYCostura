@@ -3,11 +3,6 @@ using ModaYCostura.Model.DTO;
 using ModaYCostura.Model.Interfaces;
 using ModaYCostura.Model.Models;
 using Npgsql;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ModaYCostura.Service
 {

@@ -9,13 +9,15 @@ namespace ModaYCostura.API.Controllers
     [ApiController, Route("api/[controller]")]
     public class StatusController : Controller
     {
-        private readonly StatusService _statusController;
-        public StatusController(DefaultContext context) { _statusController = new StatusService(context); }
+        private readonly StatusService _statusService;
+        public StatusController(DefaultContext context) { _statusService = new StatusService(context); }
 
         [HttpGet, Route("GetAll")]
-        public IApiResponse<IEnumerable<Status>> GetAll() => _statusController.GetAll();
+        public IApiResponse<IEnumerable<Status>> GetAll() => _statusService.GetAll();
 
         [HttpPost, Route("Add")]
-        public IApiResponse<Status> Add([FromBody] Status status) => _statusController.Add(status);
+        public IApiResponse<Status> Add([FromBody] Status status) => _statusService.Add(status);
+        [HttpPut, Route("Update")]
+        public IApiResponse<Status> Update([FromBody] Status status) => _statusService.Update(status);
     }
 }

@@ -17,5 +17,7 @@ namespace ModaYCostura.API.Controllers
 
         [HttpPost, Route("Add")]
         public IApiResponse<Model.Models.Type> Add([FromBody] Model.Models.Type type) => _typeService.Add(type);
+        [HttpPut, Route("Update")]
+        public IApiResponse<Model.Models.Type> Update([FromBody] Model.Models.Type type) => _typeService.Update(type);
     }
 }
