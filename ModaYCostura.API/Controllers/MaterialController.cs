@@ -17,5 +17,8 @@ namespace ModaYCostura.API.Controllers
 
         [HttpPost, Route("Add")]
         public IApiResponse<Material> Add([FromBody] Material material) => _materialService.Add(material);
+
+        [HttpPut, Route("Update")]
+        public IApiResponse<Material> Update([FromBody] Material material) => _materialService.Update(material);
     }
 }
