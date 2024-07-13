@@ -17,5 +17,8 @@ namespace ModaYCostura.API.Controllers
 
         [HttpPost, Route("Add")]
         public IApiResponse<Property> Add([FromBody] Property property) => _propertyService.Add(property);
+
+        [HttpPut, Route("Update")]
+        public IApiResponse<Property> Update([FromBody] Property property) => _propertyService.Update(property);
     }
 }
