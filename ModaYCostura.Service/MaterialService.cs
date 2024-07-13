@@ -3,6 +3,7 @@ using ModaYCostura.Data;
 using ModaYCostura.Model.DTO;
 using ModaYCostura.Model.Interfaces;
 using ModaYCostura.Model.Models;
+using Npgsql;
 
 namespace ModaYCostura.Service
 {
@@ -19,6 +20,24 @@ namespace ModaYCostura.Service
             var newClient = _context.Materials.Attach(material).Entity;
             _context.SaveChanges();
             return new ApiSuccess<Material>(newClient);
+        }
+
+        public IApiResponse<Material> Update(Material material)
+        {
+            try
+            {
+                _context.Materials.Update(material);
+                _context.SaveChanges();
+                return new ApiSuccess<Material>(material);
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException is PostgresException exception)
+                {
+                    return new ApiFail<Material>($"SQLCode: {exception.SqlState}");
+                }
+                return new ApiFail<Material>(ex.Message);
+            }
         }
     }
 }
