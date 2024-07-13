@@ -17,5 +17,8 @@ namespace ModaYCostura.API.Controllers
 
         [HttpPost, Route("Add")]
         public IApiResponse<Localization> Add([FromBody] Localization localization) => _localizationService.Add(localization);
+
+        [HttpPut, Route("Update")]
+        public IApiResponse<Localization> Update([FromBody] Localization localization) => _localizationService.Update(localization);
     }
 }

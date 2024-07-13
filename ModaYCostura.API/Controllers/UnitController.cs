@@ -17,5 +17,7 @@ namespace ModaYCostura.API.Controllers
 
         [HttpPost, Route("Add")]
         public IApiResponse<Unit> Add([FromBody] Unit unit) => _unitService.Add(unit);
+        [HttpPut, Route("Update")]
+        public IApiResponse<Unit> Update([FromBody] Unit unit) => _unitService.Update(unit);
     }
 }
