@@ -2,7 +2,7 @@
 using ModaYCostura.Data;
 using ModaYCostura.Model.Interfaces;
 using ModaYCostura.Model.Models;
-using ModaYCostura.Service;
+using ModaYCostura.Service.Services;
 
 namespace ModaYCostura.API.Controllers
 {
@@ -14,8 +14,5 @@ namespace ModaYCostura.API.Controllers
 
         [HttpGet, Route("GetAll")]
         public IApiResponse<IEnumerable<Job>> GetAll() => _jobService.GetAll();
-
-        [HttpPost, Route("Add")]
-        public IApiResponse<Job> Add([FromBody] Job job) => _jobService.Add(job);
     }
 }

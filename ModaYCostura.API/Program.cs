@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using ModaYCostura.Data;
-using ModaYCostura.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 

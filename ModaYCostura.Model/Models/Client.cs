@@ -1,12 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using ModaYCostura.Model.Utils;
 
 namespace ModaYCostura.Model.Models
 {
-    public class Client
+    public class Client : Table<long>
     {
-
-        public long Id { get; set; }
         [Required]
         public string Name { get; set; } = string.Empty;
         [Required]

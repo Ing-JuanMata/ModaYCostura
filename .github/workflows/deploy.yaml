@@ -23,4 +23,4 @@ jobs:
             - name: remove container
               run: docker rm -f myc
             - name: create container in port 80
-              run: docker run --name myc --network=composers_default -d ghcr.io/ing-juanmata/modaycostura:latest
+              run: docker run --restart always --name myc --network=composers_default -d ghcr.io/ing-juanmata/modaycostura:latest

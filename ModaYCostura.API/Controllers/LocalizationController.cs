@@ -2,7 +2,8 @@
 using ModaYCostura.Data;
 using ModaYCostura.Model.Interfaces;
 using ModaYCostura.Model.Models;
-using ModaYCostura.Service;
+using ModaYCostura.Service.Services;
+using ModaYCostura.Service.WriteBehaviours;
 
 namespace ModaYCostura.API.Controllers
 {
@@ -10,15 +11,20 @@ namespace ModaYCostura.API.Controllers
     public class LocalizationController : Controller
     {
         private readonly LocalizationService _localizationService;
-        public LocalizationController(DefaultContext context) { _localizationService = new LocalizationService(context); }
+        private readonly LocalizationWB _localizationWB;
+        public LocalizationController(DefaultContext context)
+        {
+            _localizationService = new LocalizationService(context);
+            _localizationWB = new LocalizationWB(context);
+        }
 
         [HttpGet, Route("GetAll")]
         public IApiResponse<IEnumerable<Localization>> GetAll() => _localizationService.GetAll();
 
         [HttpPost, Route("Add")]
-        public IApiResponse<Localization> Add([FromBody] Localization localization) => _localizationService.Add(localization);
+        public IApiResponse<Localization> Add([FromBody] Localization localization) => _localizationWB.Add(localization);
 
         [HttpPut, Route("Update")]
-        public IApiResponse<Localization> Update([FromBody] Localization localization) => _localizationService.Update(localization);
+        public IApiResponse<Localization> Update([FromBody] Localization localization) => _localizationWB.Update(localization);
     }
 }

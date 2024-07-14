@@ -2,7 +2,8 @@
 using ModaYCostura.Data;
 using ModaYCostura.Model.Interfaces;
 using ModaYCostura.Model.Models;
-using ModaYCostura.Service;
+using ModaYCostura.Service.Services;
+using ModaYCostura.Service.WriteBehaviours;
 
 namespace ModaYCostura.API.Controllers
 {
@@ -10,9 +11,11 @@ namespace ModaYCostura.API.Controllers
     public class ClientController : Controller
     {
         private readonly ClientService _clientService;
+        private readonly ClientWB _clientWB;
         public ClientController(DefaultContext defaultContext)
         {
             _clientService = new ClientService(defaultContext);
+            _clientWB = new ClientWB(defaultContext);
         }
 
         [HttpGet, Route("GetAll")]
@@ -25,9 +28,9 @@ namespace ModaYCostura.API.Controllers
         public IApiResponse<bool> Exists(string phone) => _clientService.Exists(phone);
 
         [HttpPost, Route("Add")]
-        public IApiResponse<Client> Add([FromBody] Client client) => _clientService.Add(client);
+        public IApiResponse<Client> Add([FromBody] Client client) => _clientWB.Add(client);
 
         [HttpPut, Route("Update")]
-        public IApiResponse<Client> Update([FromBody] Client client) => _clientService.Update(client);
+        public IApiResponse<Client> Update([FromBody] Client client) => _clientWB.Update(client);
     }
 }

@@ -6,7 +6,10 @@ namespace ModaYCostura.Data
     public class DefaultContext : DbContext
     {
         public DefaultContext() { }
-        public DefaultContext(DbContextOptions<DefaultContext> options) : base(options) { }
+        public DefaultContext(DbContextOptions<DefaultContext> options) : base(options)
+        {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+        }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Localization> Localizations { get; set; }

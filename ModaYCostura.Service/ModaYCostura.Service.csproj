@@ -15,4 +15,9 @@
     <ProjectReference Include="..\ModaYCostura.Model\ModaYCostura.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ProcedureBehaviour\" />
+    <Folder Include="QueryBehaviours\" />
+  </ItemGroup>
+
 </Project>

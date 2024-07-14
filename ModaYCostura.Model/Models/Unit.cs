@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ModaYCostura.Model.Utils;
 
 namespace ModaYCostura.Model.Models
 {
-    public class Unit
+    public class Unit : Table<long>
     {
-
-        public long Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string ShortName { get; set; } = string.Empty;
     }
